@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-poppins: "Poppins", system-ui, sans-serif;
+    --font-inter: "Inter", system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-slate-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-700 antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand/20 text-ink;
+  }
+
+  /* Honor reduced-motion globally for decorative animations. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Brand gradient text (hero accent). */
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-brand via-brand-400 to-brand-300 bg-clip-text text-transparent;
+  }
+
+  /* Radial mask helper to fade decorative grids toward edges. */
+  .mask-radial-faded {
+    -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
+  }
+
+  /* Thin hairline divider. */
+  .hairline-light {
+    @apply border-slate-200;
+  }
+  .hairline-dark {
+    @apply border-white/10;
+  }
+
+  /* Dotted blueprint texture used on dark hero/feature blocks. */
+  .bg-blueprint {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
